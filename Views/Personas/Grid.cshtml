@@ -1,0 +1,52 @@
+﻿@model List<ReportesMVC.Models.Persona>
+
+@{
+    ViewData["Title"] = "Mis Datos";
+}
+
+<h2>Mis Datos</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning">
+        No se encontraron datos.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>ID Sexo</th>
+                <th>Correo</th>
+                <th>Teléfono o Celular (1)</th>
+                <th>ID Tipo Documento</th>
+                <th>Número Identificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in Model)
+            {
+                <tr ondblclick="irAEditar(@persona.Iidpersona)">
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Appaterno</td>
+                    <td>@persona.Apmaterno</td>
+                    <td>@persona.Iidsexo</td>
+                    <td>@persona.Correo</td>
+                    <td>@persona.Telefonoocelular1</td>
+                    <td>@persona.Iidtipodocumento</td>
+                    <td>@persona.Numeroidentificacion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    function irAEditar(id) {
+        window.location.href = '/Personas/Edit/' + id;
+    }
+</script>

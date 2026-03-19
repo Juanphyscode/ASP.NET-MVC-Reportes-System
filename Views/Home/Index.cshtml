@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido</h1>
+    <p>Verifique sus datos en BDReportes.</p>
+    <!-- Mensaje de error si el login falla -->
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red">@ViewBag.Error</p>
+    }
+
+    <!-- Formulario de login -->
+    <form asp-action="Login" method="post">
+        <p>
+            <label for="numeroidentificacion">
+                Número de Identificación:
+                <input type="text" id="numeroidentificacion" name="numeroIdentificacion">
+            </label>
+        </p>
+        <p>
+            <label for="password">
+                Contraseña:
+                <input type="password" id="password" name="password">
+            </label>
+        </p>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
